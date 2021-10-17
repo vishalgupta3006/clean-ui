@@ -1,4 +1,4 @@
-import  './InputText.scss';
+import  './TextField.scss';
 interface Props{
   type?: string,
   placeholder?: string,
@@ -7,7 +7,7 @@ interface Props{
   id?: string,
   onclickhandler?: ()=>{}
 }
-const InputField = (props:Props) => {
+const textField = (props:Props) => {
   const { type = "text", placeholder, className = "default", label = "", id = "", onclickhandler = () => { } } = props;
   return (
       <div className='inputField' onClick={() => onclickhandler()}>
@@ -17,4 +17,4 @@ const InputField = (props:Props) => {
       </div>
   );
 }
-export default InputField;
+export default textField;
