@@ -1,0 +1,22 @@
+
+.container{
+  height: 100vh;
+  background-image: url('../../resources/login_bg.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+}
+.container::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+  linear-gradient(
+      0deg,
+      rgb(0 0 0/ 0.9), rgb(0 0 0/ 0.3)
+  );
+  z-index: -1;
+}
