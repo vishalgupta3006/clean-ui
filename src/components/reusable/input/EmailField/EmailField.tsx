@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import emailValidator from '../../../../utils/emailValidator';
+import emailValidator from '../../../../utils/emailValidationCheck';
 import './EmailField.scss';
 interface Props {
   placeholder?: string,
@@ -26,7 +26,7 @@ const EmailField: React.FC<Props> = (props) => {
       return setError('Invalid Email Address')
   }
   return (
-    <div className='inputField' onClick={() => onclickhandler()}>
+    <div className='emailField' onClick={() => onclickhandler()}>
       <label className='inputFieldLabel'> {label}
         <span className='validationError'>{error}</span>
         <input

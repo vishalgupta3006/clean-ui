@@ -30,12 +30,12 @@ const PasswordField: React.FC<Props> = (props) => {
     if (passwordValidationCheck(e.target.value))
       return setError('');
     else
-      return setError('Password must be atleast 8 characters long');
+      return setError('Password must be between 8 to 15 characters long which includes at least one lowercase letter, one uppercase letter, one numeric digit, and one special character');
   }
   return (
-    <div className='inputField' onClick={() => onclickhandler()}>
+    <div>
+    <div className='passwordField' onClick={() => onclickhandler()}>
       <label className='inputFieldLabel'> {label}
-        <span className='validationError'>{error}</span>
         <input type={type}
           placeholder={placeholder}
           className={className}
@@ -48,6 +48,8 @@ const PasswordField: React.FC<Props> = (props) => {
           {(type === 'password') ? <FaEye /> : <FaEyeSlash />}
         </div>
       </IconContext.Provider>
+    </div>
+    <div className='passwordValidatorError'>{error}</div>
     </div>
   );
 }

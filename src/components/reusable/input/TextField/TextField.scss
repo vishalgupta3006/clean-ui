@@ -3,6 +3,7 @@ $regular: 'Rubik', sans-serif;
 
 .inputField{
   width: 100%;
+  position: relative;
   .inputFieldLabel{
     font-size: 0.875rem;
     color: $blue;
@@ -16,6 +17,7 @@ $regular: 'Rubik', sans-serif;
       font-size: 0.6rem;
       right: 0;
       top: 0.4rem;
+      cursor: context-menu;
     }
   }
   input{

@@ -31,7 +31,7 @@ const NumberField: React.FC<Props> = (props: Props) => {
       return setError('');
   }
   return (
-    <div className='inputField' onClick={() => onclickhandler()}>
+    <div className='numberField' onClick={() => onclickhandler()}>
       <label className='inputFieldLabel'> {label} <span className='validationError'>{error}</span>
         <input type='number'
         placeholder={placeholder} 

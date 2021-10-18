@@ -1,4 +1,5 @@
 const passwordValidationCheck = (password: string) => {
-  return password.length >= 8;
+  const passwordRegex = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/);
+  return passwordRegex.test(password);
 }
 export default passwordValidationCheck;

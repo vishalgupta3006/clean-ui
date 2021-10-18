@@ -1,4 +1,5 @@
 import { isMobile } from "react-device-detect";
+import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Button from "../reusable/input/Button/Button";
 import EmailField from "../reusable/input/EmailField/EmailField";
@@ -27,6 +28,9 @@ const RegisterForm = () => {
       </div>
       <div>
         <Button type='button' label='input' className='btn-medium' />
+      </div>
+      <div className='registerContainerFooter'>
+        Already have an Account? <Link to='/Login' className='loginLink'>Login </Link>
       </div>
     </div>
   )

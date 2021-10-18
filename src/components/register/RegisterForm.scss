@@ -5,9 +5,8 @@ $regular: 'Rubik', sans-serif;
 .registerContainer{
   background: $white;
   border-radius: 0.25rem;
-  min-width: 350px;
   box-shadow: 0 2px 14px rgb(0 0 0 / 25%);
-  //height: 500px;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -33,6 +32,21 @@ $regular: 'Rubik', sans-serif;
     }
     form.mobileVersion{
       grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+  }
+  .registerContainerFooter{
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: $regular;
+    .loginLink{
+      text-decoration: none;
+      color: $blue;
+    }
+    .loginLink:hover{
+      display: inline-block;
+      transform: scale(1.1) !important;
+      font-weight: 600;
     }
   }
 }
