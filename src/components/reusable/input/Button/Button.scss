@@ -31,5 +31,21 @@ $regular: 'Rubik', sans-serif;
     background: $white;
     color: $blue;
     cursor: pointer; 
-  }  
+  }
+  button:disabled{
+    background-color: $grey;
+    border-color: $grey;
+    &:hover{
+      color: $white;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@keyframes spin {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(359deg)}
+}
+.loader{
+  animation: spin 2s  infinite;
 }

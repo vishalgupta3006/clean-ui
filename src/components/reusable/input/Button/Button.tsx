@@ -1,15 +1,24 @@
+import {  FaSpinner } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 import './Button.scss';
 interface Props{
   type: 'button' | 'submit' | 'reset',
   label: string,
   className?: string,
-  onclickhandler?: any
+  onclickhandler?: any,
+  isLoading?: boolean
 }
 const Button = (props:Props) => {
-    const { type = "button", label = "", className = "default", onclickhandler=()=>{}} = props;
+    const { type = "button", label = "", className = "default", onclickhandler=()=>{}, isLoading = false } = props;
     return (
         <div className='buttonWrapper'>
-            <button type={type} className={className} onClick={(e:any)=>onclickhandler(e)}>{label}</button>
+            <button type={type} className={className} onClick={(e:any)=>onclickhandler(e)} disabled={isLoading}>
+            {
+                isLoading ?<IconContext.Provider value={{ className: 'loader' }}>
+                <div><FaSpinner /></div>
+              </IconContext.Provider>: label
+            }
+            </button>
         </div>
     );
 }
