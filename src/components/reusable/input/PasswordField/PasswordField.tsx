@@ -2,6 +2,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import './PasswordField.scss';
 import { useState } from 'react';
+import passwordValidationCheck from '../../../../utils/passwordValidationCheck';
+
 interface Props {
   placeholder?: string,
   className?: string,
@@ -9,21 +11,38 @@ interface Props {
   id?: string,
   onclickhandler?: () => {}
 }
-const PasswordField = (props: Props) => {
-  const { placeholder, className = "default", label = "", id = "", onclickhandler = () => { } } = props;
+const PasswordField: React.FC<Props> = (props) => {
+  const { placeholder,
+    className = "default",
+    label = "",
+    id = "",
+    onclickhandler = () => { },
+  } = props;
+
   const [type, setType] = useState('password');
+  const [error, setError] = useState('');
 
   const passwordToggle = () => {
     (type === 'password') ? setType('text') : setType('password');
-    console.log(type)
   }
 
+  const onValueChange = (e: any) => {
+    if (passwordValidationCheck(e.target.value))
+      return setError('');
+    else
+      return setError('Password must be atleast 8 characters long');
+  }
   return (
     <div className='inputField' onClick={() => onclickhandler()}>
-      <label htmlFor={id} className='inputFieldLabel'>
-        {label}
+      <label className='inputFieldLabel'> {label}
+        <span className='validationError'>{error}</span>
+        <input type={type}
+          placeholder={placeholder}
+          className={className}
+          id={id}
+          onChange={onValueChange}
+        />
       </label>
-      <input type={type} placeholder={placeholder} className={className} id={id} autoComplete="on" />
       <IconContext.Provider value={{ className: 'passwordIcon' }}>
         <div className='passwordIconContainer' onClick={passwordToggle}>
           {(type === 'password') ? <FaEye /> : <FaEyeSlash />}

@@ -2,7 +2,7 @@ import './Login.scss';
 import LoginForm from './LoginForm';
 const Login = () => {
   return (
-    <div className='container'>
+    <div className='loginPageContainer'>
       <LoginForm />
     </div>
   )

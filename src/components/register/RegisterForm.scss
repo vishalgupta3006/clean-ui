@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import '../../colors';
+$regular: 'Rubik', sans-serif;
+
+.registerContainer{
+  background: $white;
+  border-radius: 0.25rem;
+  min-width: 350px;
+  box-shadow: 0 2px 14px rgb(0 0 0 / 25%);
+  //height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .registerHeading{
+    height:80px;
+    border-bottom: 2px solid $lightGreen;
+    .headingText{
+      text-align: center;
+      color: $black;
+      font-family: $regular;
+      .companyName{
+        color: $purple;
+        background-color: $lightBlue;
+      }
+    }
+  }
+  .formBodyContainer{
+    padding: 1rem;
+    form{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    form.mobileVersion{
+      grid-template-columns: 1fr;
+    }
+  }
+}

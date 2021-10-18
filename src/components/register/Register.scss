@@ -1,6 +1,6 @@
 
-.loginPageContainer{
-  height: 100vh;
+.registerPageContainer{
+  min-height: 100vh;
   background-image: url('../../resources/login_bg.jpg');
   background-repeat: no-repeat;
   background-size:cover;
@@ -9,7 +9,7 @@
   align-items: center;
   isolation: isolate;
 }
-.loginPageContainer::before{
+.registerPageContainer::before{
   content: "";
   position: absolute;
   inset: 0;

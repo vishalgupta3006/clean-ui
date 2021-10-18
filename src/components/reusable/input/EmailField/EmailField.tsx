@@ -1,39 +1,36 @@
 import { useState } from 'react';
-import './TextField.scss';
+import emailValidator from '../../../../utils/emailValidator';
+import './EmailField.scss';
 interface Props {
-  type?: string,
   placeholder?: string,
   className?: string,
   label: string,
   id?: string,
-  onclickhandler?: () => {},
-  maxLength?: number,
+  onclickhandler?: () => {}
   autoComplete?: boolean
 }
-const TextField: React.FC<Props> = (props) => {
+const EmailField: React.FC<Props> = (props) => {
   const {
-    type = "text",
     placeholder,
     className = "default",
     label = "", id = "",
     onclickhandler = () => { },
-    maxLength = 2 ** 10,
     autoComplete = true
   } = props;
 
   const [error, setError] = useState('');
   const onValueChange = (e: any) => {
-    if (e.target.value.length > maxLength)
-      return setError(`Length can not be greater than ${maxLength}`);
-    else
+    if (emailValidator(e.target.value))
       return setError('');
+    else
+      return setError('Invalid Email Address')
   }
   return (
     <div className='inputField' onClick={() => onclickhandler()}>
       <label className='inputFieldLabel'> {label}
         <span className='validationError'>{error}</span>
         <input
-          type={type}
+          type='email'
           placeholder={placeholder}
           className={className}
           id={id}
@@ -44,4 +41,4 @@ const TextField: React.FC<Props> = (props) => {
     </div>
   );
 }
-export default TextField;
+export default EmailField;
