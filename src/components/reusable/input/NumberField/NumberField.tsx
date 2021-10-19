@@ -1,46 +1,34 @@
 import { useState } from 'react';
+import SkeletonField from '../SkeletonField/SkeletonField';
 import './NumberField.scss';
 interface Props {
   placeholder?: string,
   className?: string,
   label: string,
   id?: string,
-  onclickhandler?: () => {},
+  onclickhandler?: any,
   minVal?: number,
   maxVal?: number,
-  autoComplete?:boolean
+  disableAutoComplete?:boolean,
+  disableErrorControl?: boolean,
+  mandatory?: boolean
 }
 
 const NumberField: React.FC<Props> = (props: Props) => {
   const {
-    placeholder,
-    className = "default",
-    label = "",
-    id = "",
-    onclickhandler = () => { },
     minVal = Number.MIN_SAFE_INTEGER,
     maxVal = Number.MAX_SAFE_INTEGER,
-    autoComplete = true
    } = props;
 
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const onValueChange = (e: any) => {
     if(e.target.value > maxVal || e.target.value < minVal)
-      return setError(`Value should be in range of ${minVal} to ${maxVal}`);
+      return setErrorMessage(`Value should be in range of ${minVal} to ${maxVal}`);
     else
-      return setError('');
+      return setErrorMessage('');
   }
   return (
-    <div className='numberField' onClick={() => onclickhandler()}>
-      <label className='inputFieldLabel'> {label} <span className='validationError'>{error}</span>
-        <input type='number'
-        placeholder={placeholder} 
-        className={className} 
-        id={id} 
-        autoComplete={autoComplete?'on':'off'}
-        onChange={onValueChange}/>
-      </label>
-    </div>
+    <SkeletonField {...props} type='number' onValueChange={onValueChange} errorMessage={errorMessage}/>
   );
 }
 export default NumberField;

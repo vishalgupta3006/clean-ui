@@ -1,47 +1,29 @@
 import { useState } from 'react';
+import SkeletonField from '../SkeletonField/SkeletonField';
 import './TextField.scss';
 interface Props {
-  type?: string,
   placeholder?: string,
   className?: string,
   label: string,
   id?: string,
-  onclickhandler?: () => {},
+  onclickhandler?:any,
   maxLength?: number,
-  autoComplete?: boolean
+  autoComplete?: boolean,
+  disableErrorControl?: boolean,
+  mandatory?: boolean
 }
 const TextField: React.FC<Props> = (props) => {
-  const {
-    type = "text",
-    placeholder,
-    className = "default",
-    label = "", id = "",
-    onclickhandler = () => { },
-    maxLength = 2 ** 10,
-    autoComplete = true
-  } = props;
+  const maxLength = props.maxLength ? props.maxLength : 2 ** 10;
 
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const onValueChange = (e: any) => {
     if (e.target.value.length > maxLength)
-      return setError(`Length can not be greater than ${maxLength}`);
+      return setErrorMessage(`Length can not be greater than ${maxLength}`);
     else
-      return setError('');
+      return setErrorMessage('');
   }
   return (
-    <div className='inputField' onClick={() => onclickhandler()}>
-      <label className='inputFieldLabel'> {label}
-        <span className='validationError'>{error}</span>
-        <input
-          type={type}
-          placeholder={placeholder}
-          className={className}
-          id={id}
-          autoComplete={autoComplete ? 'on' : 'off'}
-          onChange={onValueChange}
-        />
-      </label>
-    </div>
+    <SkeletonField {...props} onValueChange={onValueChange} errorMessage={errorMessage}/>
   );
 }
 export default TextField;

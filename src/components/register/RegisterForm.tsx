@@ -8,6 +8,9 @@ import PasswordField from "../reusable/input/PasswordField/PasswordField";
 import TextField from "../reusable/input/TextField/TextField";
 import './RegisterForm.scss';
 const RegisterForm = () => {
+  const confirmPasswordCheck = (e:any) => {
+    console.log(e.target.value, document.forms[0][6])
+  }
   return (
     <div className='registerContainer'>
       <ToastContainer />
@@ -15,19 +18,19 @@ const RegisterForm = () => {
         <h1 className='headingText'>Register on <span className='companyName'>Clean</span></h1>
       </div>
       <div className='formBodyContainer'>
-        <form className={isMobile?'mobileVersion': 'desktopVersion'}>
-        <TextField label='First Name' placeholder='Enter First Name' maxLength={16}/>
-        <TextField label='Last Name' placeholder='Enter last Name' maxLength={16} />
-        <EmailField label='Email Address' placeholder='Enter Email Address' />
-        <TextField type='tel' label='Phone Number' placeholder='Enter Phone Number' maxLength={10}/>
-        <TextField label='Country' placeholder='Enter Country' />
-        <NumberField label='Age' placeholder='Enter Age' maxVal={100} minVal={18}/>
-        <PasswordField label='Password' placeholder='Enter Password' />
-        <PasswordField label='Confirm Password' placeholder='Confirm Your Password'  />
+        <form className={isMobile ? 'mobileVersion' : 'desktopVersion'} >
+          <TextField label='First Name' placeholder='Enter First Name' maxLength={16} mandatory/>
+          <TextField label='Last Name' placeholder='Enter Last Name' maxLength={16} />
+          <EmailField label='Email Address' placeholder='Enter Email Address' />
+          <TextField label='Phone Number' placeholder='Enter Phone Number' maxLength={10} />
+          <TextField label='Country' placeholder='Enter Country' />
+          <NumberField label='Age' placeholder='Enter Age' maxVal={100} minVal={18} className='error'/>
+          <PasswordField label='Password' placeholder='Enter Password' id='password' mandatory />
+          <PasswordField label='Confirm Password' placeholder='Confirm Your Password' onValueChange={confirmPasswordCheck} />
         </form>
       </div>
       <div>
-        <Button type='button' label='input' className='btn-medium' />
+        <Button type='button' label='Create an account' className='btn-medium' />
       </div>
       <div className='registerContainerFooter'>
         Already have an Account? <Link to='/Login' className='loginLink'>Login </Link>

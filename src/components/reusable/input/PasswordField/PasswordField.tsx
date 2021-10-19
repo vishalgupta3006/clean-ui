@@ -3,53 +3,41 @@ import { IconContext } from 'react-icons';
 import './PasswordField.scss';
 import { useState } from 'react';
 import passwordValidationCheck from '../../../../utils/passwordValidationCheck';
+import SkeletonField from '../SkeletonField/SkeletonField';
 
 interface Props {
   placeholder?: string,
   className?: string,
   label?: string,
   id?: string,
-  onclickhandler?: () => {}
+  onclickhandler?: any,
+  disableErrorControl?: boolean,
+  onValueChange?:any,
+  mandatory?: boolean
 }
 const PasswordField: React.FC<Props> = (props) => {
-  const { placeholder,
-    className = "default",
-    label = "",
-    id = "",
-    onclickhandler = () => { },
-  } = props;
-
+  const onValueChange = props.onValueChange;
   const [type, setType] = useState('password');
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const passwordToggle = () => {
     (type === 'password') ? setType('text') : setType('password');
   }
 
-  const onValueChange = (e: any) => {
+  const errorHandler = (e: any) => {
     if (passwordValidationCheck(e.target.value))
-      return setError('');
+      return setErrorMessage('');
     else
-      return setError('Password must be between 8 to 15 characters long which includes at least one lowercase letter, one uppercase letter, one numeric digit, and one special character');
+      return setErrorMessage('Password must be between 8 to 15 characters long which includes at least one lowercase letter, one uppercase letter, one numeric digit, and one special character');
   }
   return (
-    <div>
-    <div className='passwordField' onClick={() => onclickhandler()}>
-      <label className='inputFieldLabel'> {label}
-        <input type={type}
-          placeholder={placeholder}
-          className={className}
-          id={id}
-          onChange={onValueChange}
-        />
-      </label>
-      <IconContext.Provider value={{ className: 'passwordIcon' }}>
+    <div className='passwordField'>
+      <SkeletonField type={type} {...props} errorMessage={errorMessage} onValueChange={onValueChange? onValueChange: errorHandler} />
+    <IconContext.Provider value={{ className: 'passwordIcon' }}>
         <div className='passwordIconContainer' onClick={passwordToggle}>
           {(type === 'password') ? <FaEye /> : <FaEyeSlash />}
         </div>
       </IconContext.Provider>
-    </div>
-    <div className='passwordValidatorError'>{error}</div>
     </div>
   );
 }

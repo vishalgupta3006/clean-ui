@@ -61,8 +61,8 @@ const LoginForm = () => {
       </div>
       <div className='loginBody'>
         <form onSubmit={submitHandler}>
-          <EmailField placeholder="Enter Email" label="Email" id='email' />
-          <PasswordField placeholder="Enter Password" label="Password" id='password' />
+          <EmailField placeholder="Enter Email" label="Email" disableErrorControl />
+          <PasswordField placeholder="Enter Password" label="Password" disableErrorControl/>
           <Button type='submit' label='Login' className='btn-medium' isLoading={isLoading} />
         </form>
       </div>
