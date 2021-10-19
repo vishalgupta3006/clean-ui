@@ -4,7 +4,7 @@ $regular: 'Rubik', sans-serif;
 .inputField{
   width: 100%;
   position: relative;
-  }
+
   .inputFieldLabel{
     width: 100%;
     font-size: 0.75rem;
@@ -14,53 +14,59 @@ $regular: 'Rubik', sans-serif;
     font-weight: 400;
     cursor: pointer;
     user-select: none;
-    .fieldHeading{
-      display: flex;
-      .asteriskMark{
-        color: red;
-      }
-      .labelContent{
-      max-width: calc(100% - 20px);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      
-      }
   }
-  input{
-    box-sizing: border-box;
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    border: 1px solid $grey;
-    background: $white;
-    outline: none;
-    transition: border 0.3s ease;
-    font-family: $regular;
-    font-size: 1rem;
-    font-weight:300;
-    color: $black;
-  }
-  input::placeholder{
-    color: $grey;
-  }
-  input:focus{
-    border: 1px solid $blue;
-    &::placeholder{
-      visibility: hidden;
+  .fieldHeading{
+    display: flex;
+    .asteriskMark{
+      color: red;
+    }
+    .labelContent{
+    max-width: calc(100% - 20px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     }
   }
-  // input.error{
-  //   border: 2px solid red;
-  // }
+  .inputFieldArea{
+    position: relative;
+    display: flex;
+    align-items: center;
+    input{
+      box-sizing: border-box;
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      border: 1px solid $grey;
+      background: $white;
+      outline: none;
+      transition: border 0.3s ease;
+      font-family: $regular;
+      font-size: 1rem;
+      font-weight:300;
+      color: $black;
+    }
+    input::placeholder{
+      color: $grey;
+    }
+    input:focus{
+      border: 1px solid $blue;
+      &::placeholder{
+        visibility: hidden;
+      }
+    }
+    .inputIconContainer{
+      position: absolute;
+      right: 1rem;
+      display: flex;
+    }
+  }
+  .validationError{
+    color: red;
+    font-size: 0.6rem;
+    font-family: $regular;
+    font-weight: 400;
+    text-transform: none;
+    cursor: context-menu;
+    width: 100%;
+  }  
 }
-.validationError{
-  color: red;
-  font-size: 0.6rem;
-  font-family: $regular;
-  font-weight: 400;
-  text-transform: none;
-  cursor: context-menu;
-  width: 100%;
-}
-

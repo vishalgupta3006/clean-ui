@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import React, { ReactElement } from 'react';
 import './SkeletonField.scss';
 interface Props {
   type?: string,
@@ -11,7 +11,8 @@ interface Props {
   mandatory?: boolean,
   errorMessage?: string,
   onclickhandler?: any,
-  onValueChange?: any
+  onValueChange?: any,
+  inputFieldIcon?: ReactElement
 }
 const SkeletonField: React.FC<Props> = (props) => {
   const {
@@ -25,7 +26,8 @@ const SkeletonField: React.FC<Props> = (props) => {
     disableAutoComplete = false,
     disableErrorControl = false,
     errorMessage,
-    mandatory = false
+    mandatory = false,
+    inputFieldIcon
   } = props;
 
   return (
@@ -35,16 +37,22 @@ const SkeletonField: React.FC<Props> = (props) => {
           <div className='labelContent'>{label} </div>
           <div className='asteriskMark'>{mandatory ? '*' : ''}</div>
         </div>
-        <input
-          type={type}
-          placeholder={placeholder}
-          className={className}
-          id={id}
-          autoComplete={disableAutoComplete ? 'off' : 'on'}
-          onChange={(e) => {
-            onValueChange(e)
-          }}
-        />
+        <div className='inputFieldArea'>
+          <input
+            type={type}
+            placeholder={placeholder}
+            className={className}
+            id={id}
+            autoComplete={disableAutoComplete ? 'off' : 'on'}
+            onChange={(e) => {
+              onValueChange(e)
+            }}
+          />
+          {inputFieldIcon &&
+            <div className='inputIconContainer' >
+              {inputFieldIcon}
+            </div>}
+        </div>
       </label>
       {disableErrorControl ? <></> : <div className='validationError'>{errorMessage}</div>}
     </div>

@@ -1,0 +1,26 @@
+@import '../../../../colors.scss';
+$regular: 'Rubik', sans-serif;
+
+.inputField textarea{
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid $grey;
+  outline: none;
+  padding: 0.5rem;
+  transition: border 0.3s ease;
+  font-family: $regular;
+  font-size: 1rem;
+  font-weight:300;
+  color: $black;
+  resize:vertical;
+  &::placeholder{
+    color: $grey;
+  }
+  &:focus{
+    border: 1px solid $blue;
+    &::placeholder{
+      visibility: hidden;
+    }
+  }
+}

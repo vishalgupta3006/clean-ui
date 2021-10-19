@@ -30,14 +30,22 @@ const PasswordField: React.FC<Props> = (props) => {
     else
       return setErrorMessage('Password must be between 8 to 15 characters long which includes at least one lowercase letter, one uppercase letter, one numeric digit, and one special character');
   }
+  const PasswordIcon = () => {
+    return (<IconContext.Provider value={{ className: 'passwordIcon' }}>
+    <div className='passwordIconContainer' onClick={passwordToggle}>
+      {(type === 'password') ? <FaEye /> : <FaEyeSlash />}
+    </div>
+  </IconContext.Provider>)
+  }
   return (
     <div className='passwordField'>
-      <SkeletonField type={type} {...props} errorMessage={errorMessage} onValueChange={onValueChange? onValueChange: errorHandler} />
-    <IconContext.Provider value={{ className: 'passwordIcon' }}>
-        <div className='passwordIconContainer' onClick={passwordToggle}>
-          {(type === 'password') ? <FaEye /> : <FaEyeSlash />}
-        </div>
-      </IconContext.Provider>
+      <SkeletonField
+      type={type}
+      {...props}
+      inputFieldIcon = {<PasswordIcon/> }
+      errorMessage={errorMessage}
+      onValueChange={onValueChange? onValueChange: errorHandler} 
+      />
     </div>
   );
 }

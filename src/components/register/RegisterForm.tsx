@@ -5,6 +5,7 @@ import Button from "../reusable/input/Button/Button";
 import EmailField from "../reusable/input/EmailField/EmailField";
 import NumberField from "../reusable/input/NumberField/NumberField";
 import PasswordField from "../reusable/input/PasswordField/PasswordField";
+import TextareaField from "../reusable/input/TextareaField/TextareaField";
 import TextField from "../reusable/input/TextField/TextField";
 import './RegisterForm.scss';
 const RegisterForm = () => {
@@ -27,6 +28,7 @@ const RegisterForm = () => {
           <NumberField label='Age' placeholder='Enter Age' maxVal={100} minVal={18} className='error'/>
           <PasswordField label='Password' placeholder='Enter Password' id='password' mandatory />
           <PasswordField label='Confirm Password' placeholder='Confirm Your Password' onValueChange={confirmPasswordCheck} />
+          <TextareaField label='ssassaasa' placeholder={'fcgderx'}/>
         </form>
       </div>
       <div>

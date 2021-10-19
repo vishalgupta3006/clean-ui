@@ -28,7 +28,7 @@ const NumberField: React.FC<Props> = (props: Props) => {
       return setErrorMessage('');
   }
   return (
-    <SkeletonField {...props} type='number' onValueChange={onValueChange} errorMessage={errorMessage}/>
+    <SkeletonField {...props} type='number' onValueChange={onValueChange} errorMessage={errorMessage} />
   );
 }
 export default NumberField;
