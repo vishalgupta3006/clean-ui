@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { isMobile } from "react-device-detect";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -8,9 +9,17 @@ import PasswordField from "../reusable/input/PasswordField/PasswordField";
 import TextareaField from "../reusable/input/TextareaField/TextareaField";
 import TextField from "../reusable/input/TextField/TextField";
 import './RegisterForm.scss';
-const RegisterForm = () => {
+const RegisterForm:React.FC = () => {
+  let [confirmPasswordError, setConfirmPasswordError] = useState('');
   const confirmPasswordCheck = (e:any) => {
-    console.log(e.target.value, document.forms[0][6])
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+    const confirmPassword = (e.target as HTMLInputElement).value;
+    if(confirmPassword !== password){
+      setConfirmPasswordError('Password does not match')
+    }
+    else{
+      setConfirmPasswordError('')
+    }
   }
   return (
     <div className='registerContainer'>
@@ -26,8 +35,8 @@ const RegisterForm = () => {
           <TextField label='Phone Number' placeholder='Enter Phone Number' maxLength={10} />
           <TextField label='Country' placeholder='Enter Country' />
           <NumberField label='Age' placeholder='Enter Age' maxVal={100} minVal={18} className='error'/>
-          <PasswordField label='Password' placeholder='Enter Password' id='password' mandatory />
-          <PasswordField label='Confirm Password' placeholder='Confirm Your Password' onValueChange={confirmPasswordCheck} />
+          <PasswordField label='Password' placeholder='Enter Password' id='password' mandatory  />
+          <PasswordField label='Confirm Password' placeholder='Confirm Your Password' onValueChange={confirmPasswordCheck} errorMessage={confirmPasswordError}/>
           <TextareaField label='ssassaasa' placeholder={'fcgderx'}/>
         </form>
       </div>

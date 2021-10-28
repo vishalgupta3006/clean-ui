@@ -6,7 +6,6 @@ interface Props {
   className?: string,
   label: string,
   id?: string,
-  onclickhandler?: any,
   minVal?: number,
   maxVal?: number,
   disableAutoComplete?:boolean,

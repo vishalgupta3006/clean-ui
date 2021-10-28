@@ -7,7 +7,6 @@ interface Props {
   className?: string,
   label: string,
   id?: string,
-  onclickhandler?:any,
   disableAutoComplete?: boolean,
   disableErrorControl?: boolean,
   mandatory?: boolean

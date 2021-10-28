@@ -8,7 +8,6 @@ interface Props {
   disableErrorControl?: boolean,
   mandatory?: boolean,
   errorMessage?: string,
-  onclickhandler?: any,
   onValueChange?: any
 }
 const TextareaField: React.FC<Props> = (props) => {
@@ -21,7 +20,6 @@ const TextareaField: React.FC<Props> = (props) => {
     disableErrorControl,
     mandatory,
     errorMessage,
-    onclickhandler,
     onValueChange
   } = props;
   return (
@@ -29,17 +27,16 @@ const TextareaField: React.FC<Props> = (props) => {
       <label className='inputFieldLabel'>
         <div className='fieldHeading'>
           <div className='labelContent'>{label} </div>
-          <div className='asteriskMark'>{mandatory ? '*' : ''}</div>
+          <div className='asteriskMark'>{mandatory && '*'}</div>
         </div>
         <textarea
           placeholder={placeholder}
           className={className}
           id={id}
           autoComplete={disableAutoComplete ? 'off' : 'on'}
-          onChange={(e) => {
-            onValueChange(e)
-          }}
-          onClick={onclickhandler}
+          onChange = {
+            onValueChange && onValueChange
+          }
         />
       </label>
       {disableErrorControl ? <></> : <div className='validationError'>{errorMessage}</div>}

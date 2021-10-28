@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import './SkeletonField.scss';
 interface Props {
   type?: string,
@@ -10,7 +10,6 @@ interface Props {
   disableErrorControl?: boolean,
   mandatory?: boolean,
   errorMessage?: string,
-  onclickhandler?: any,
   onValueChange?: any,
   inputFieldIcon?: ReactElement
 }
@@ -21,7 +20,6 @@ const SkeletonField: React.FC<Props> = (props) => {
     className,
     label,
     id,
-    onclickhandler,
     onValueChange,
     disableAutoComplete = false,
     disableErrorControl = false,
@@ -30,12 +28,18 @@ const SkeletonField: React.FC<Props> = (props) => {
     inputFieldIcon
   } = props;
 
+  const [value, setValue] = useState('');
+  const onChangeHandler = (e:any) => {
+    setValue(e.target.value)
+    if(onValueChange)
+      onValueChange(e)
+  }
   return (
-    <div className='inputField' onClick={onclickhandler}>
-      <label className='inputFieldLabel'>
+    <div className='inputField'>
+      <label className='inputFieldLabel' onClick={(e) => e.stopPropagation()}>
         <div className='fieldHeading'>
           <div className='labelContent'>{label} </div>
-          <div className='asteriskMark'>{mandatory ? '*' : ''}</div>
+          <div className='asteriskMark'>{mandatory && '*'}</div>
         </div>
         <div className='inputFieldArea'>
           <input
@@ -44,9 +48,8 @@ const SkeletonField: React.FC<Props> = (props) => {
             className={className}
             id={id}
             autoComplete={disableAutoComplete ? 'off' : 'on'}
-            onChange={(e) => {
-              onValueChange(e)
-            }}
+            value = {value}
+            onChange = {onChangeHandler}
           />
           {inputFieldIcon &&
             <div className='inputIconContainer' >
@@ -54,7 +57,7 @@ const SkeletonField: React.FC<Props> = (props) => {
             </div>}
         </div>
       </label>
-      {disableErrorControl ? <></> : <div className='validationError'>{errorMessage}</div>}
+      {!disableErrorControl && <div className='validationError'>{errorMessage}</div>}
     </div>
   );
 }
