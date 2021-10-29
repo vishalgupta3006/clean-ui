@@ -31,6 +31,11 @@ $regular: 'Rubik', sans-serif;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
+    form.desktopVersion{
+      .submitButtonContainer{
+        grid-column-end: span 2;
+      }
+    }
     form.mobileVersion{
       grid-template-columns: 1fr;
       max-width: 100%;
@@ -45,9 +50,7 @@ $regular: 'Rubik', sans-serif;
       color: $blue;
     }
     .loginLink:hover{
-      display: inline-block;
-      transform: scale(1.1) !important;
-      font-weight: 600;
+      text-decoration: underline;
     }
   }
 }

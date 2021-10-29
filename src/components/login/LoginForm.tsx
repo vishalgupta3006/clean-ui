@@ -5,8 +5,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import emailValidator from '../../utils/emailValidationCheck';
-import { useState } from 'react';
-import {useHistory} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import EmailField from '../reusable/input/EmailField/EmailField';
 
 const LoginForm = () => {
@@ -19,18 +19,18 @@ const LoginForm = () => {
       withCredentials: true,
       headers: {'Content-Type': 'application/json'},
     }
-    const data ={
+    const data = {
       EmailAddress: EmailAddress,
       password: password
     }
     axios.post('http://localhost:8080/api/auth/login',data, requestOptions)
     .then(res => {
       setIsLoading(false)
-      history.push('/')
+      history.push('/dashboard')
     })
     .catch(err => {
       setIsLoading(false)
-      toast.error("Something went wrong from our side")
+      toast.error("Invalid Login Credentials !!")
     })
   }
   const submitHandler = (e: any) => {
@@ -43,15 +43,9 @@ const LoginForm = () => {
     setIsLoading(true)
     loginHandler(EmailAddress, password);
   }
-  // const dataHandler = () =>{
-  //   axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
-  //   axios.get('http://localhost:8080/api/data/lead/all',{withCredentials: true})
-  //   .then(res => console.log(res))
-  //   .catch(err => console.log(err));
-  // }
-  // const loginStatus = () => {
-  //   return axios.get('http://localhost:8080/api/auth/isLoggedIn',{withCredentials: true});
-  // }
+  useEffect(()=>{
+    
+  },[]);
   return (
     <div className='loginContainer'>
       <ToastContainer />
@@ -65,6 +59,9 @@ const LoginForm = () => {
           <PasswordField placeholder="Enter Password" label="Password" disableErrorControl/>
           <Button type='submit' label='Login' className='btn-medium' isLoading={isLoading} />
         </form>
+      </div>
+      <div className='loginContainerFooter'>
+        You are not a member? <Link to='/register' className='registerLink'>Register </Link>
       </div>
     </div>
   );

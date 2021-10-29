@@ -6,13 +6,14 @@ interface Props{
   label: string,
   className?: string,
   onclickhandler?: any,
-  isLoading?: boolean
+  isLoading?: boolean,
+  isDisabled?: boolean
 }
 const Button = (props:Props) => {
-    const { type = "button", label = "", className = "default", onclickhandler=()=>{}, isLoading = false } = props;
+    const { type = "button", label = "", className = "default", onclickhandler=()=>{}, isLoading = false, isDisabled = false } = props;
     return (
         <div className='buttonWrapper'>
-            <button type={type} className={className} onClick={(e:any)=>onclickhandler(e)} disabled={isLoading}>
+            <button type={type} className={className} onClick={(e:any)=>onclickhandler(e)} disabled={isLoading || isDisabled}>
             {
                 isLoading ?<IconContext.Provider value={{ className: 'loader' }}>
                 <div><FaSpinner /></div>
