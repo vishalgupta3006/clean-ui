@@ -14,7 +14,6 @@ const ProtectedRoute = (props: Props) => {
   const history = useHistory();
   const { isLoggedIn, isLoaded } = useSelector((state: StoreType) => state.authenticationReducer);
 
-
   if (isLoaded && !isLoggedIn)
     history.push('/login')
   else if (isLoaded && isLoggedIn)

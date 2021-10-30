@@ -10,32 +10,8 @@ import RegisterMobile from '../components/register/RegisterMobile';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userLoggedIn, userLoggedOut } from '../store/action/authentication';
-import ProtectedRoute from './ProtectedRoute'
+import ProtectedRoute from './ProtectedRoute';
 import GuestOnlyRoute from './GuestOnlyRoute';
-// const ProtectedRoute = ({ component: Component, ...rest }) => {
-//   const isLoggedIn = useSelector(state => state.authenticationReducer.isLoggedIn);
-//   const history = useHistory();
-//   //if(!isLoggedIn) history.push('/login');
-//   return isLoggedIn && <Route {...rest}>
-//     {Component}
-//   </Route>
-// }
-// const guestRoute = ({ component: Component, ...rest }) => {
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
-//   const history = useHistory();
-//   const isAuth = () => {
-//     return axios.get('http://localhost:8080/api/auth/isLoggedIn', { withCredentials: true })
-//   }
-//   isAuth().then(
-//     res => {
-//       if (res.data) setIsLoggedIn(true);
-//       else history.push('/login');
-//     }
-//   )
-//   return isLoggedIn && <Route {...rest}>
-//     {Component}
-//   </Route>
-// }
 
 const Routes = () => {
   const dispatch = useDispatch();

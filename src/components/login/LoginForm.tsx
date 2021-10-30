@@ -8,49 +8,54 @@ import emailValidator from '../../utils/emailValidationCheck';
 import { useEffect, useState } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import EmailField from '../reusable/input/EmailField/EmailField';
+import { useDispatch } from 'react-redux';
+import { userLoggedIn } from '../../store/action/authentication';
 
 const LoginForm = () => {
-  //const [isPageLoading, setIsPageLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoginSuccessful, setIsLoginSuccessful] = useState(false);
   const history = useHistory();
   const loginHandler = (EmailAddress:string, password:string) => {
+    setIsLoading(true);
     const requestOptions ={
-      //method: 'POST',
       withCredentials: true,
       headers: {'Content-Type': 'application/json'},
     }
     const data = {
-      EmailAddress: EmailAddress,
-      password: password
+      EmailAddress,
+      password
     }
     axios.post('http://localhost:8080/api/auth/login',data, requestOptions)
     .then(res => {
-      setIsLoading(false)
-      history.push('/dashboard')
+      setIsLoading(false);
+      setIsLoginSuccessful(true);
+      history.push('/dashboard');
     })
     .catch(err => {
-      setIsLoading(false)
-      toast.error("Invalid Login Credentials !!")
+      setIsLoading(false);
+      toast.error("Invalid Login Credentials !!");
     })
   }
   const submitHandler = (e: any) => {
     e.preventDefault();
     const EmailAddress = e.target[0].value;
     const password = e.target[1].value;
-    if (!EmailAddress) return toast.error("Please enter the Email Address")
-    if(!password) return toast.error("Please enter the Password")
-    if(!emailValidator(EmailAddress)) return toast.error("Email Address is not valid")
-    setIsLoading(true)
+    if (!EmailAddress) return toast.error("Please enter the Email Address");
+    if(!password) return toast.error("Please enter the Password");
+    if(!emailValidator(EmailAddress)) return toast.error("Email Address is not valid");
     loginHandler(EmailAddress, password);
   }
+
+  const dispatch = useDispatch();
   useEffect(()=>{
-    
-  },[]);
+    if(isLoginSuccessful)
+    dispatch(userLoggedIn());
+  },[isLoginSuccessful, dispatch]);
+
   return (
     <div className='loginContainer'>
       <ToastContainer />
       <div className='loginHeading'>
-        {/* <div onClick={dataHandler}>get data</div><div onClick={loginStatus}>loginStatus</div> */}
         <h1 className='headingText'>Login to <span className='companyName'>Clean</span></h1>
       </div>
       <div className='loginBody'>
