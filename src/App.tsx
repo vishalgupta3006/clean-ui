@@ -1,10 +1,11 @@
-import './App.css';
-import Routes from './Routes';
+import Routes from './routes';
+import { Provider } from 'react-redux';
+import store from './store';
 const App = () => {
-  return(
-    <div>
+  return (
+    <Provider store ={store}>
       <Routes />
-    </div>
+    </Provider>
   )
 }
 
