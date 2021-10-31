@@ -30,7 +30,7 @@ const RegisterForm: React.FC = () => {
       withCredentials: true,
       headers: { 'Content-Type': 'application/json' },
     }
-    axios.post('http://localhost:8080/api/register', userDetails, requestOptions)
+    axios.post('https://clean-crm.herokuapp.com/api/register', userDetails, requestOptions)
     .then(res => {
       if(res.status === 200){
         history.push('/login');
