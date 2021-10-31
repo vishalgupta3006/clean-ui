@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Topbar from "../topbar/Topbar";
-import { leadListError, leadListFetched, leadListLoading } from "./leadsAction";
-import { StoreType } from '../../store/types';
+import Topbar from "../../topbar/Topbar";
+import { leadListError, leadListFetched, leadListLoading } from "../leadsAction";
+import { StoreType } from '../../../store/types';
+import LeadCard from "./LeadCard";
+import './Leads.scss';
 
 const Leads: React.FC = () => {
   const dispath = useDispatch();
@@ -21,6 +23,7 @@ const Leads: React.FC = () => {
         })
         .catch(err => {
           dispath(leadListError());
+          console.log(err);
         })
     }
     fetchLeads();
@@ -28,11 +31,15 @@ const Leads: React.FC = () => {
   return (
     <div>
       <Topbar />
-      {
-        leadList && leadList.map((lead: any) => {
-          return <div key={lead._id}>{lead.FirstName}</div>
-        })
-      }
+      <div className='leadsPageContainer'>
+        <div className='leadListContainer'>
+          {
+            leadList && leadList.map((lead: any) => {
+              return <LeadCard key={lead._id} {...lead} />
+            })
+          }
+        </div>
+      </div>
     </div>
   )
 }

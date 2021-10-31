@@ -1,0 +1,11 @@
+.leadsPageContainer{
+  margin: auto;
+  width: 80vw;
+  min-width: 756px;
+}
+.leadListContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 2rem;
+}

@@ -12,7 +12,8 @@ import { useDispatch } from 'react-redux';
 import { userLoggedIn, userLoggedOut } from '../store/action/authentication';
 import ProtectedRoute from './ProtectedRoute';
 import GuestOnlyRoute from './GuestOnlyRoute';
-import Leads from '../components/leads/Leads';
+import Leads from '../components/leads/components/Leads';
+import Topbar from '../components/topbar/Topbar';
 
 const Routes: React.FC = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ const Routes: React.FC = () => {
       <Switch>
         <Route exact path="/">
           <Redirect to="/dashboard" />
+        </Route>
+        <Route exact path="/topbar">
+          <Topbar/>
         </Route>
         <ProtectedRoute exact path="/dashboard" component={Dashboard} />
         <GuestOnlyRoute exact path="/login" component={isDesktop ? Login : LoginMobile} />
