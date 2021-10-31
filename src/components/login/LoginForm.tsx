@@ -10,6 +10,7 @@ import {Link, useHistory} from 'react-router-dom';
 import EmailField from '../reusable/input/EmailField/EmailField';
 import { useDispatch } from 'react-redux';
 import { userLoggedIn } from '../../store/action/authentication';
+import CompanyLogo from '../reusable/CompanyLogo/CompanyLogo';
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -56,7 +57,7 @@ const LoginForm = () => {
     <div className='loginContainer'>
       <ToastContainer />
       <div className='loginHeading'>
-        <h1 className='headingText'>Login to <span className='companyName'>Clean</span></h1>
+        <h1 className='headingText'>Login to <CompanyLogo /></h1>
       </div>
       <div className='loginBody'>
         <form onSubmit={submitHandler}>

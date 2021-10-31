@@ -10,6 +10,7 @@ import PasswordField from "../reusable/input/PasswordField/PasswordField";
 // import TextareaField from "../reusable/input/TextareaField/TextareaField";
 import TextField from "../reusable/input/TextField/TextField";
 import './RegisterForm.scss';
+import CompanyLogo from "../reusable/CompanyLogo/CompanyLogo";
 const RegisterForm: React.FC = () => {
   // const [confirmPasswordError, setConfirmPasswordError] = useState('');
   // const confirmPasswordCheck = (e:any) => {
@@ -69,7 +70,7 @@ const RegisterForm: React.FC = () => {
     <div className='registerContainer'>
       <ToastContainer />
       <div className='registerHeading'>
-        <h1 className='headingText'>Register on <span className='companyName'>Clean</span></h1>
+        <h1 className='headingText'>Register on <CompanyLogo /></h1>
       </div>
       <div className='formBodyContainer'>
         <form className={isMobile ? 'mobileVersion' : 'desktopVersion'} onSubmit={submitHandler}>

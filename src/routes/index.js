@@ -32,6 +32,7 @@ const Routes = () => {
         <ProtectedRoute exact path="/dashboard" component={Dashboard} />
         <GuestOnlyRoute exact path="/login" component={isDesktop ?Login : LoginMobile} />
         <GuestOnlyRoute exact path="/register" component={isDesktop ?Register : RegisterMobile} />
+        <ProtectedRoute exact path="/leads" component={<div>Leads</div>}/>
       </Switch>
     </BrowserRouter>
   )

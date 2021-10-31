@@ -1,0 +1,49 @@
+@import '../../colors.scss';
+.topbarEndContainer{
+  font-family: $regular;
+  position: relative;
+  div{
+    cursor: pointer;
+  }
+  .userDiv{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    .caretDownIcon{
+      font-size: 1rem;
+    }
+  }
+  .userOptions{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    background: $white;
+    color: $blue;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    width: 200px;
+    visibility: hidden;
+    box-shadow: 0 2px 14px rgb(0 0 0 / 25%);
+    &.active{
+      visibility: visible;
+    }
+    >div{
+      padding: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    >div:hover{
+      background: $lightGrey;
+    }
+    .userName{
+      color: $white;
+      background-color: $black;
+      padding: 0.25rem;
+      border-radius: 0.25rem;
+    }
+  }
+}

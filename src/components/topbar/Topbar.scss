@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import '../../colors.scss';
+$regular: 'Rubik', sans-serif;
+
+.topbarContainer{
+  background: $blue;
+  color: $white;
+  font-family: $regular;
+  padding: 0.5rem 10%;
+  display: flex;
+  justify-content: space-between;
+  min-width: 756px;
+  .topbarMiddleContainer{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    gap: 40px;
+    >div{
+    text-transform: uppercase;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    }
+    >div:hover{
+      background: $purple;
+    }
+  }
+}
