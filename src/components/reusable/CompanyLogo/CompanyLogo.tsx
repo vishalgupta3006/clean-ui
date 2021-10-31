@@ -1,11 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import './CompanyLogo.scss';
-interface Props{
-  onClick?: any
-}
-const CompanyLogo:React.FC<Props> = (props) => {
+
+const CompanyLogo:React.FC = () => {
+  const history = useHistory();
   return (
-    <span className='companyLogo' onClick = {props.onClick && props.onClick}>
+    <span className='companyLogo' onClick={() => history.push('/')} >
       Clean
     </span>
   )

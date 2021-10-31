@@ -1,17 +1,15 @@
 import { isDesktop } from 'react-device-detect';
-import { useHistory } from 'react-router';
 import CompanyLogo from '../reusable/CompanyLogo/CompanyLogo';
 import SideNavigation from './SideNavigation';
 import './Topbar.scss';
 import TopbarEnd from './TopbarEnd';
-import TopbarNavigation from './TopbarNavigation';
+import NavigationMenu from './NavigationMenu';
 const Topbar = () => {
-  const history = useHistory();
   if (isDesktop)
     return (
       <div className='topbarContainer'>
-        <CompanyLogo onClick={() => history.push('/')} />
-        <TopbarNavigation />
+        <CompanyLogo />
+        <NavigationMenu />
         <TopbarEnd />
       </div>
     )
@@ -19,7 +17,7 @@ const Topbar = () => {
     return (
       <div className='topbarContainer mobile'>
         <SideNavigation />
-        <CompanyLogo onClick={() => history.push('/')} />
+        <CompanyLogo />
         <TopbarEnd />
       </div>
     )

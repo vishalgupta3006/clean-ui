@@ -1,0 +1,29 @@
+@import '../../colors.scss';
+
+.topbarNavigation{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: end;
+  gap: 2rem;
+  >div{
+    text-transform: uppercase;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    background: $white;
+    color: $blue;
+  }
+  &.mobile{
+    grid-template-columns: 1fr;
+    >div{
+      justify-content: flex-start;
+      border-bottom: 1px solid $grey;
+    }
+  }
+
+}
