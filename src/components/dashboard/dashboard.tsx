@@ -1,6 +1,7 @@
+import React from "react";
 import Topbar from "../topbar/Topbar";
 
-const Dashboard = () => {
+const Dashboard:React.FC = () => {
   return (
     <div>
       <Topbar />

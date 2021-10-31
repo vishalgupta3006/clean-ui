@@ -2,7 +2,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import './PasswordField.scss';
 import { useState } from 'react';
-import passwordValidationCheck from '../../../../utils/passwordValidationCheck';
+import {passwordValidationCheck} from '../../../../utils/validators';
 import SkeletonField from '../SkeletonField/SkeletonField';
 
 interface Props {

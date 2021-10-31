@@ -7,13 +7,14 @@ import { isDesktop } from 'react-device-detect';
 import LoginMobile from '../components/login/LoginMobile';
 import Register from '../components/register/Register';
 import RegisterMobile from '../components/register/RegisterMobile';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userLoggedIn, userLoggedOut } from '../store/action/authentication';
 import ProtectedRoute from './ProtectedRoute';
 import GuestOnlyRoute from './GuestOnlyRoute';
+import Leads from '../components/leads/Leads';
 
-const Routes = () => {
+const Routes: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const isAuth = async () => {
@@ -30,9 +31,10 @@ const Routes = () => {
           <Redirect to="/dashboard" />
         </Route>
         <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-        <GuestOnlyRoute exact path="/login" component={isDesktop ?Login : LoginMobile} />
-        <GuestOnlyRoute exact path="/register" component={isDesktop ?Register : RegisterMobile} />
-        <ProtectedRoute exact path="/leads" component={<div>Leads</div>}/>
+        <GuestOnlyRoute exact path="/login" component={isDesktop ? Login : LoginMobile} />
+        {/* <Route exact path='/login' component={isDesktop ? Login : LoginMobile}/> */}
+        <GuestOnlyRoute exact path="/register" component={isDesktop ? Register : RegisterMobile} />
+        <ProtectedRoute exact path="/leads" component={Leads} />
       </Switch>
     </BrowserRouter>
   )

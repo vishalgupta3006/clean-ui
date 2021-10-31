@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import emailValidator from '../../../../utils/emailValidationCheck';
+import {emailValidator} from '../../../../utils/validators';
 import SkeletonField from '../SkeletonField/SkeletonField';
 import './EmailField.scss';
 interface Props {

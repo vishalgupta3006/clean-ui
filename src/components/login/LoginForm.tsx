@@ -4,7 +4,7 @@ import PasswordField from '../reusable/input/PasswordField/PasswordField';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-import emailValidator from '../../utils/emailValidationCheck';
+import {emailValidator} from '../../utils/validators';
 import { useEffect, useState } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import EmailField from '../reusable/input/EmailField/EmailField';
