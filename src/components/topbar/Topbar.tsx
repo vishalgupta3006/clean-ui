@@ -9,7 +9,7 @@ const Topbar = () => {
     return (
       <div className='topbarContainer'>
         <CompanyLogo />
-        <NavigationMenu />
+        <div className='topbarNavigationMenu'><NavigationMenu /></div>
         <TopbarEnd />
       </div>
     )

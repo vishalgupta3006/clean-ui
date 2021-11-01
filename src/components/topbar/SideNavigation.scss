@@ -20,6 +20,7 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       background: $white;
       .sideMenuHeaderSection{
         display: flex;
@@ -28,6 +29,9 @@
         .menuCloseIcon{
           font-size: 2rem;
         }
+      }
+      .sideMenuFooter{
+        align-self: center;
       }
     }
     &.active{

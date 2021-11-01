@@ -26,7 +26,7 @@ const LoginForm = () => {
       EmailAddress,
       password
     }
-    axios.post('https://clean-crm.herokuapp.com/api/auth/login',data, requestOptions)
+    axios.post('http://localhost:8080/api/auth/login',data, requestOptions)
     .then(res => {
       setIsLoading(false);
       setIsLoginSuccessful(true);

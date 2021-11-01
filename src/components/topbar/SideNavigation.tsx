@@ -13,11 +13,14 @@ const SideNavigation: React.FC = () => {
       </div>
       <div className={isMenuVisible ? 'sideMenuContainer active' : 'sideMenuContainer'}>
         <div className='sideMenuBody' >
-          <div className='sideMenuHeaderSection'>
-            <CompanyLogo/>
-            <div className='menuCloseIcon' onClick={() => setIsMenuVisible(false)}><FaTimes /></div>
+          <div>
+            <div className='sideMenuHeaderSection'>
+              <CompanyLogo />
+              <div className='menuCloseIcon' onClick={() => setIsMenuVisible(false)}><FaTimes /></div>
+            </div>
+            <NavigationMenu isMobileVersion />
           </div>
-          <NavigationMenu isMobileVersion />
+          <div className='sideMenuFooter'>Version 1.1 @Clean 2021</div>
         </div>
       </div>
     </div>

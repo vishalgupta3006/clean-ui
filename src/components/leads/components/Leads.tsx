@@ -17,7 +17,7 @@ const Leads: React.FC = () => {
         withCredentials: true,
         headers: { 'Content-Type': 'application/json' }
       }
-      axios.get('https://clean-crm.herokuapp.com/api/data/lead/all', requestOptions)
+      axios.get('http://localhost:8080/api/data/lead/all', requestOptions)
         .then(res => {
           dispath(leadListFetched(res.data));
         })
