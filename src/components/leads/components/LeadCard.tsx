@@ -1,6 +1,7 @@
 import React from "react";
 import './LeadCard.scss';
-interface Props{
+
+interface Props {
   _id: string,
   FirstName: string,
   LastName: string,
@@ -8,10 +9,24 @@ interface Props{
   EmailAddress: string
 }
 const LeadCard: React.FC<Props> = (props) => {
-
-  return(
+  const {
+    FirstName,
+    LastName,
+    PhoneNumber,
+    EmailAddress
+  } = props;
+  return (
     <div className='leadCardContainer'>
-      {props.FirstName}{props.LastName}{props.PhoneNumber}{props.EmailAddress}
+      <img src={`https://avatars.dicebear.com/api/initials/:${props.FirstName} ${props.LastName}.svg`}
+        className='leadAvatar'
+        alt='lead avatar'
+      />
+
+      <div className='leadDataContainer'>
+        <div>{FirstName} {LastName}</div>
+        <div>{PhoneNumber}</div>
+        <div>{EmailAddress}</div>
+      </div>
     </div>
   )
 }

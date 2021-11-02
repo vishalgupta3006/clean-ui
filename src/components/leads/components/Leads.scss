@@ -1,11 +1,18 @@
 .leadsPageContainer{
-  margin: auto;
-  width: 80vw;
+  width: 100vw;
+  padding: 0.5rem 10vw;
   min-width: 756px;
-}
-.leadListContainer{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 2rem;
+  box-sizing: border-box;
+  .leadListContainer{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+  }
+  &.mobile{
+    min-width: 280px;
+    //  width: 90vw;
+    .leadListContainer{
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
 }

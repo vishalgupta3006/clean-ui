@@ -8,14 +8,14 @@
   display: flex;
   justify-content: space-between;
   min-width: 956px;
-  //width: calc(100% - 20vw);
+  width: 100%;
+  box-sizing: border-box;
   .topbarNavigationMenu{
     width: 70%;
     align-self: center;
   }
   &.mobile{
     padding: 0.5rem;
-    width: calc(100% - 1rem);
-    min-width: 300px;
+    min-width: 280px;
   }
 }

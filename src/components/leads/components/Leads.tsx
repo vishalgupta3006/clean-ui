@@ -31,7 +31,7 @@ const Leads: React.FC = () => {
   return (
     <div>
       <Topbar />
-      <div className='leadsPageContainer'>
+      <div className='leadsPageContainer mobile'>
         <div className='leadListContainer'>
           {
             leadList && leadList.map((lead: any) => {
