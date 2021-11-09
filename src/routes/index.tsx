@@ -19,7 +19,7 @@ const Routes: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const isAuth = async () => {
-      const response = await axios.get('http://localhost:8080/api/auth/isLoggedIn', { withCredentials: true });
+      const response = await axios.get('https://clean-crm.herokuapp.com/api/auth/isLoggedIn', { withCredentials: true });
       if (response.data === true) dispatch(userLoggedIn());
       else dispatch(userLoggedOut());
     }
