@@ -1,12 +1,15 @@
 .leadsPageContainer{
   width: 100vw;
   padding: 0.5rem 10vw;
-  min-width: 756px;
+  min-width: 956px;
   box-sizing: border-box;
   .leadListContainer{
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
+    @media screen and (max-width: 1256px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
   &.mobile{
     min-width: 280px;

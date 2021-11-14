@@ -1,31 +1,43 @@
 import React from "react";
 import './LeadCard.scss';
-
+import { isDesktop } from 'react-device-detect';
+import { FaEnvelope, FaIdBadge, FaPhone } from "react-icons/fa";
+import { elapsedDaysCalculator } from "../../../utils/timeCalculations";
 interface Props {
   _id: string,
   FirstName: string,
   LastName: string,
   PhoneNumber: number,
-  EmailAddress: string
+  EmailAddress: string,
+  CreatedOn: Date,
+  ModifiedOn: Date
 }
 const LeadCard: React.FC<Props> = (props) => {
   const {
     FirstName,
     LastName,
     PhoneNumber,
-    EmailAddress
+    EmailAddress,
+    CreatedOn,
+    ModifiedOn
   } = props;
+  const timeSinceCreation = elapsedDaysCalculator(new Date(CreatedOn));
+  const timeSinceModification = elapsedDaysCalculator(new Date(ModifiedOn));
+  console.log(elapsedDaysCalculator(new Date(CreatedOn)), elapsedDaysCalculator(new Date(ModifiedOn)))
   return (
-    <div className='leadCardContainer'>
+    <div className={isDesktop ? 'leadCardContainer desktopVersion' : 'leadCardContainer'}>
       <img src={`https://avatars.dicebear.com/api/initials/:${props.FirstName} ${props.LastName}.svg`}
         className='leadAvatar'
         alt='lead avatar'
       />
-
       <div className='leadDataContainer'>
-        <div>{FirstName} {LastName}</div>
-        <div>{PhoneNumber}</div>
-        <div>{EmailAddress}</div>
+        <div><FaIdBadge /> {FirstName} {LastName}</div>
+        <div><FaPhone />{PhoneNumber}</div>
+        <div><FaEnvelope /> {EmailAddress}</div>
+        <div className='leadAgeContainer'>
+          <div>Added {timeSinceCreation} d ago</div>
+          <div>Modified {timeSinceModification} d ago</div>
+        </div>
       </div>
     </div>
   )

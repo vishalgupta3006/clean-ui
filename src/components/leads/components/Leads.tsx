@@ -5,6 +5,7 @@ import Topbar from "../../topbar/Topbar";
 import { leadListError, leadListFetched, leadListLoading } from "../leadsAction";
 import { StoreType } from '../../../store/types';
 import LeadCard from "./LeadCard";
+import { isDesktop } from "react-device-detect";
 import './Leads.scss';
 
 const Leads: React.FC = () => {
@@ -31,7 +32,7 @@ const Leads: React.FC = () => {
   return (
     <div>
       <Topbar />
-      <div className='leadsPageContainer mobile'>
+      <div className={isDesktop ? 'leadsPageContainer' : 'leadsPageContainer mobile'}>
         <div className='leadListContainer'>
           {
             leadList && leadList.map((lead: any) => {

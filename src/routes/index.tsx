@@ -13,7 +13,6 @@ import { userLoggedIn, userLoggedOut } from '../store/action/authentication';
 import ProtectedRoute from './ProtectedRoute';
 import GuestOnlyRoute from './GuestOnlyRoute';
 import Leads from '../components/leads/components/Leads';
-import Topbar from '../components/topbar/Topbar';
 
 const Routes: React.FC = () => {
   const dispatch = useDispatch();
@@ -31,12 +30,11 @@ const Routes: React.FC = () => {
         <Route exact path="/">
           <Redirect to="/dashboard" />
         </Route>
-        <Route exact path="/topbar">
-          <Topbar/>
+        <Route exact path="/open">
+          <Leads/>
         </Route>
         <ProtectedRoute exact path="/dashboard" component={Dashboard} />
         <GuestOnlyRoute exact path="/login" component={isDesktop ? Login : LoginMobile} />
-        {/* <Route exact path='/login' component={isDesktop ? Login : LoginMobile}/> */}
         <GuestOnlyRoute exact path="/register" component={isDesktop ? Register : RegisterMobile} />
         <ProtectedRoute exact path="/leads" component={Leads} />
       </Switch>
