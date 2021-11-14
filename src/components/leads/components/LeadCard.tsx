@@ -10,7 +10,8 @@ interface Props {
   PhoneNumber: number,
   EmailAddress: string,
   CreatedOn: Date,
-  ModifiedOn: Date
+  ModifiedOn: Date,
+  LeadStage: string
 }
 const LeadCard: React.FC<Props> = (props) => {
   const {
@@ -19,17 +20,21 @@ const LeadCard: React.FC<Props> = (props) => {
     PhoneNumber,
     EmailAddress,
     CreatedOn,
-    ModifiedOn
+    ModifiedOn,
+    LeadStage
   } = props;
   const timeSinceCreation = elapsedDaysCalculator(new Date(CreatedOn));
   const timeSinceModification = elapsedDaysCalculator(new Date(ModifiedOn));
   console.log(elapsedDaysCalculator(new Date(CreatedOn)), elapsedDaysCalculator(new Date(ModifiedOn)))
   return (
     <div className={isDesktop ? 'leadCardContainer desktopVersion' : 'leadCardContainer'}>
+      <div className='leadCarLeftSide'>
       <img src={`https://avatars.dicebear.com/api/initials/:${props.FirstName} ${props.LastName}.svg`}
         className='leadAvatar'
         alt='lead avatar'
       />
+      <div className='leadStage'>{LeadStage}</div>
+      </div>
       <div className='leadDataContainer'>
         <div><FaIdBadge /> {FirstName} {LastName}</div>
         <div><FaPhone />{PhoneNumber}</div>
