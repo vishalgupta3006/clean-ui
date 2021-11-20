@@ -8,7 +8,7 @@
   color: $blue;
   padding: 0.25rem;
   display: flex;
-  border: 2px solid $grey;
+  border: 1px solid $grey;
   transition: transform 0.2s ease-out;
   cursor: pointer;
   .leadCarLeftSide{
@@ -19,7 +19,7 @@
     align-items: center;
     .leadAvatar{
       width: 100%;
-      border-radius: 0.25rem;
+      border-radius: 50%;
     }
     .leadStage{
       font-size: 0.7rem;

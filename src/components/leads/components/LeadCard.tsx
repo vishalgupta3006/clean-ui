@@ -25,7 +25,6 @@ const LeadCard: React.FC<Props> = (props) => {
   } = props;
   const timeSinceCreation = elapsedDaysCalculator(new Date(CreatedOn));
   const timeSinceModification = elapsedDaysCalculator(new Date(ModifiedOn));
-  console.log(elapsedDaysCalculator(new Date(CreatedOn)), elapsedDaysCalculator(new Date(ModifiedOn)))
   return (
     <div className={isDesktop ? 'leadCardContainer desktopVersion' : 'leadCardContainer'}>
       <div className='leadCarLeftSide'>
