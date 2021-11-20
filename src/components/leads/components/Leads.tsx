@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Topbar from "../../topbar/Topbar";
@@ -7,6 +6,8 @@ import { StoreType } from '../../../store/types';
 import LeadCard from "./LeadCard";
 import { isDesktop } from "react-device-detect";
 import './Leads.scss';
+import { axiosApi } from "../../../utils/axiosAPI";
+import apiData from "../../../api/apiData";
 
 const Leads: React.FC = () => {
   const dispath = useDispatch();
@@ -14,18 +15,9 @@ const Leads: React.FC = () => {
   useEffect(() => {
     const fetchLeads = () => {
       dispath(leadListLoading());
-      const requestOptions = {
-        withCredentials: true,
-        headers: { 'Content-Type': 'application/json' }
-      }
-      axios.get('https://clean-crm.herokuapp.com/api/data/lead/all', requestOptions)
-        .then(res => {
-          dispath(leadListFetched(res.data));
-        })
-        .catch(err => {
-          dispath(leadListError());
-          console.log(err);
-        })
+      axiosApi(apiData.allLeads)
+        .then(res => dispath(leadListFetched(res.data)))
+        .catch(err => dispath(leadListError()));
     }
     fetchLeads();
   }, [dispath]);

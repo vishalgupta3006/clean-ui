@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { Redirect, Route } from 'react-router';
 import Dashboard from '../components/dashboard/dashboard';
@@ -13,12 +12,15 @@ import { userLoggedIn, userLoggedOut } from '../store/action/authentication';
 import ProtectedRoute from './ProtectedRoute';
 import GuestOnlyRoute from './GuestOnlyRoute';
 import Leads from '../components/leads/components/Leads';
+import { axiosApi } from '../utils/axiosAPI';
+import apiData from '../api/apiData';
 
 const Routes: React.FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const isAuth = async () => {
-      const response = await axios.get('https://clean-crm.herokuapp.com/api/auth/isLoggedIn', { withCredentials: true });
+      const response = await axiosApi(apiData.isLoggedIn);
+
       if (response.data === true) dispatch(userLoggedIn());
       else dispatch(userLoggedOut());
     }

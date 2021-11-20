@@ -2,7 +2,6 @@ import './LoginForm.scss';
 import Button from "../reusable/input/Button/Button";
 import PasswordField from '../reusable/input/PasswordField/PasswordField';
 import { toast, ToastContainer } from 'react-toastify';
-import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import {emailValidator} from '../../utils/validators';
 import { useEffect, useState } from 'react';
@@ -11,6 +10,8 @@ import EmailField from '../reusable/input/EmailField/EmailField';
 import { useDispatch } from 'react-redux';
 import { userLoggedIn } from '../../store/action/authentication';
 import CompanyLogo from '../reusable/CompanyLogo/CompanyLogo';
+import { axiosApi } from '../../utils/axiosAPI';
+import apiData from '../../api/apiData';
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,15 +19,12 @@ const LoginForm = () => {
   const history = useHistory();
   const loginHandler = (EmailAddress:string, password:string) => {
     setIsLoading(true);
-    const requestOptions ={
-      withCredentials: true,
-      headers: {'Content-Type': 'application/json'},
-    }
+
     const data = {
       EmailAddress,
       password
     }
-    axios.post('https://clean-crm.herokuapp.com/api/auth/login',data, requestOptions)
+    axiosApi({...apiData.login, body: data})
     .then(res => {
       setIsLoading(false);
       setIsLoginSuccessful(true);
